@@ -16,7 +16,7 @@
 <body>
   <div class="wrap">
     <div class="hero">
-      <div class="title"><h1>Grile interactive IoT</h1><p>Aplicație offline pentru recapitulare rapidă. Alege cursul, răspunde, vezi explicația și repetă întrebările greșite.</p></div>
+      <div class="title"><h1>Grile interactive IoT</h1></div>
       <div class="badge" id="totalBadge"></div>
     </div>
     <div class="panel controls">
@@ -53,7 +53,7 @@ function ensureOptionOrder(){if(!optionOrder || optionOrder.length!==QUESTIONS.l
 function courses(){return [...new Set(QUESTIONS.map(q=>q.course))];}
 function init(){
   ensureOptionOrder();
-  $('#totalBadge').textContent = QUESTIONS.length + ' întrebări • nivel academic';
+  $('#totalBadge').textContent = QUESTIONS.length + ' întrebări ';
   $('#courseFilter').innerHTML = '<option value="all">Toate cursurile</option>' + courses().map(c=>`<option>${c}</option>`).join('');
   $('#courseChips').innerHTML = courses().map(c=>`<span class="chip">${c}</span>`).join('');
   ['search','courseFilter','mode'].forEach(id=>$('#'+id).addEventListener('input',render));
