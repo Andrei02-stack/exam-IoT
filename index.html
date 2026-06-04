@@ -78,7 +78,7 @@ function renderStats(){
   $('#score').textContent=correct; $('#answered').textContent=answered;
   $('#bar').style.width=(QUESTIONS.length?answered/QUESTIONS.length*100:0)+'%';
   const pct=answered?Math.round(correct/answered*100):0;
-  $('#summary').innerHTML=`Scor curent: <b>${pct}%</b><br>${answered}/${QUESTIONS.length} rezolvate. ${vals.filter(x=>!x.correct).length} greșite de repetat.<br><br>
+  $('#summary').innerHTML=`Scor curent: <b>${pct}%</b><br>${answered}/${QUESTIONS.length} rezolvate. ${vals.filter(x=>!x.correct).length} greșite de repetat.<br><br>;
 }
 function render(){
   renderStats();
