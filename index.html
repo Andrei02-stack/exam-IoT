@@ -16,7 +16,7 @@
 <body>
   <div class="wrap">
     <div class="hero">
-      <div class="title"><h1>Grile interactive IoT</h1></div>
+      <div class="title"><h1>Grile interactive IoT</h1><p>Aplicație offline pentru recapitulare rapidă. Alege cursul, răspunde, vezi explicația și repetă întrebările greșite.</p></div>
       <div class="badge" id="totalBadge"></div>
     </div>
     <div class="panel controls">
@@ -53,7 +53,7 @@ function ensureOptionOrder(){if(!optionOrder || optionOrder.length!==QUESTIONS.l
 function courses(){return [...new Set(QUESTIONS.map(q=>q.course))];}
 function init(){
   ensureOptionOrder();
-  $('#totalBadge').textContent = QUESTIONS.length + ' întrebări ';
+  $('#totalBadge').textContent = QUESTIONS.length + ' întrebări • nivel academic';
   $('#courseFilter').innerHTML = '<option value="all">Toate cursurile</option>' + courses().map(c=>`<option>${c}</option>`).join('');
   $('#courseChips').innerHTML = courses().map(c=>`<span class="chip">${c}</span>`).join('');
   ['search','courseFilter','mode'].forEach(id=>$('#'+id).addEventListener('input',render));
@@ -78,7 +78,7 @@ function renderStats(){
   $('#score').textContent=correct; $('#answered').textContent=answered;
   $('#bar').style.width=(QUESTIONS.length?answered/QUESTIONS.length*100:0)+'%';
   const pct=answered?Math.round(correct/answered*100):0;
-  $('#summary').innerHTML=`Scor curent: <b>${pct}%</b><br>${answered}/${QUESTIONS.length} rezolvate. ${vals.filter(x=>!x.correct).length} greșite de repetat.<br><br>;
+  $('#summary').innerHTML=`Scor curent: <b>${pct}%</b><br>${answered}/${QUESTIONS.length} rezolvate. ${vals.filter(x=>!x.correct).length} greșite de repetat.<br><br><b>Notă:</b> variantele greșite sunt intenționat apropiate conceptual. Citește explicația după fiecare răspuns.`;
 }
 function render(){
   renderStats();
